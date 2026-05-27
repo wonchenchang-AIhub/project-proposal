@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>計畫提案指引 · 張萬權</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ════ VARIABLES ════════════════════════════════════════════ */
+:root {
+  --ink:    #0f172a;
+  --ink-2:  #334155;
+  --ink-3:  #64748b;
+  --ink-4:  #94a3b8;
+  --paper:  #f8fafc;
+  --white:  #ffffff;
+  --rule:   rgba(15,23,42,.08);
+  --rule-md:rgba(15,23,42,.14);
+
+  --gold:   #b45309;
+  --gold-lt:#fef3c7;
+  --gold-dk:#92400e;
+  --teal:   #0f766e;
+  --teal-lt:#f0fdfa;
+  --red:    #be123c;
+  --red-lt: #fff1f2;
+  --blue:   #1d4ed8;
+  --blue-lt:#eff6ff;
+
+  --step-0: #6d28d9; /* 準備 */
+  --step-1: #0284c7; /* 系統 */
+  --step-2: #0f766e; /* P1 */
+  --step-3: #b45309; /* P2 */
+  --step-4: #7c3aed; /* P3 */
+  --step-5: #be123c; /* P4 */
+  --step-6: #1d4ed8; /* 審查 */
+
+  --sans:  'Noto Sans TC', system-ui, sans-serif;
+  --serif: 'Noto Serif TC', Georgia, serif;
+  --mono:  'JetBrains Mono', monospace;
+  --r: 10px;
+  --dur: .22s;
+}
+
+/* ════ RESET ════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.7;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+a{color:inherit;text-decoration:none}
+
+/* ════ HERO ════════════════════════════════════════════════ */
+.hero{
+  background:#0f172a;
+  padding:56px 24px 48px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:-120px; right:-80px;
+  width:500px; height:500px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(180,83,9,.18) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:-60px; left:-40px;
+  width:300px; height:300px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(109,40,217,.15) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:780px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+.hero-eyebrow{
+  font-family:var(--mono);
+  font-size:10.5px;
+  font-weight:500;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#94a3b8;
+  margin-bottom:18px;
+}
+.hero-title{
+  font-family:var(--serif);
+  font-size:clamp(28px,5vw,48px);
+  font-weight:700;
+  color:#f1f5f9;
+  line-height:1.2;
+  margin-bottom:10px;
+}
+.hero-title span{color:#fbbf24}
+.hero-sub{
+  font-size:14px;
+  color:#94a3b8;
+  margin-bottom:6px;
+}
+.hero-quote{
+  font-size:13px;
+  color:#64748b;
+  font-style:italic;
+  margin-bottom:32px;
+}
+.hero-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.hero-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:11.5px;
+  font-weight:600;
+  font-family:var(--mono);
+  border:1px solid rgba(255,255,255,.12);
+  color:#cbd5e1;
+  background:rgba(255,255,255,.04);
+}
+.hero-chip span{font-size:13px}
+
+/* ════ LAYOUT ═══════════════════════════════════════════════ */
+.page{max-width:780px;margin:0 auto;padding:0 20px 80px}
+
+/* ════ SECTION HEADER ════════════════════════════════════════ */
+.section-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:40px 0 16px;
+  border-bottom:1px solid var(--rule);
+  margin-bottom:24px;
+}
+.section-num{
+  width:32px; height:32px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  color:#fff;
+  flex-shrink:0;
+}
+.section-title{
+  font-family:var(--serif);
+  font-size:18px;
+  font-weight:700;
+  color:var(--ink);
+}
+.section-desc{
+  font-size:13px;
+  color:var(--ink-3);
+  margin-top:2px;
+}
+
+/* ════ SOP FLOW ═════════════════════════════════════════════ */
+.sop-flow{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  margin-bottom:32px;
+}
+.sop-step{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:0 16px;
+  position:relative;
+}
+.sop-step:not(:last-child) .sop-line{
+  position:absolute;
+  left:23px; top:52px;
+  bottom:-4px;
+  width:2px;
+  background:var(--rule);
+}
+.sop-dot-col{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:8px;
+}
+.sop-dot{
+  width:48px; height:48px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+  flex-shrink:0;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+.sop-content{
+  padding:8px 0 28px;
+}
+.sop-tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:2px 8px;
+  border-radius:4px;
+  margin-bottom:6px;
+}
+.sop-step-title{
+  font-family:var(--serif);
+  font-size:15.5px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:4px;
+}
+.sop-step-desc{
+  font-size:13px;
+  color:var(--ink-3);
+  line-height:1.6;
+  margin-bottom:10px;
+}
+
+/* ════ PROMPT CARD ══════════════════════════════════════════ */
+.prompt-card{
+  background:var(--white);
+  border:1px solid var(--rule);
+  border-left:4px solid;
+  border-radius:var(--r);
+  overflow:hidden;
+  margin-bottom:16px;
+  box-shadow:0 1px 4px rgba(0,0,0,.05);
+}
+.prompt-card-head{
+  padding:14px 16px 12px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid var(--rule);
+  background:rgba(0,0,0,.015);
+}
+.prompt-card-info{}
+.prompt-card-badge{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:2px 7px;
+  border-radius:4px;
+  margin-bottom:5px;
+}
+.prompt-card-title{
+  font-family:var(--serif);
+  font-size:14.5px;
+  font-weight:700;
+  color:var(--ink);
+  line-height:1.35;
+}
+.prompt-card-body{
+  padding:14px 16px;
+}
+.prompt-text{
+  font-family:var(--mono);
+  font-size:12px;
+  line-height:1.75;
+  color:var(--ink-2);
+  white-space:pre-wrap;
+  word-break:break-word;
+  background:#f8fafc;
+  border:1px solid var(--rule);
+  border-radius:7px;
+  padding:14px;
+  max-height:320px;
+  overflow-y:auto;
+}
+.prompt-text::-webkit-scrollbar{width:4px}
+.prompt-text::-webkit-scrollbar-thumb{background:var(--rule-md);border-radius:4px}
+.prompt-card-foot{
+  padding:10px 16px 12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border-top:1px solid var(--rule);
+}
+.copy-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 14px;
+  border-radius:7px;
+  font-size:12px;
+  font-weight:700;
+  color:#fff;
+  transition:all var(--dur);
+  box-shadow:0 2px 6px rgba(0,0,0,.12);
+}
+.copy-btn:active{transform:scale(.96)}
+.copy-btn.copied{background:#059669 !important;box-shadow:0 2px 6px rgba(5,150,105,.3)}
+.copy-hint{
+  font-size:11.5px;
+  color:var(--ink-4);
+  font-style:italic;
+}
+
+/* ════ REVIEW CARD (id:11) ══════════════════════════════════ */
+.review-card{
+  background:var(--white);
+  border:1px solid var(--rule);
+  border-radius:var(--r);
+  overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.review-card-head{
+  background:#0f172a;
+  padding:20px 20px 16px;
+  color:#f1f5f9;
+}
+.review-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:#fbbf24;margin-bottom:8px;
+}
+.review-title{
+  font-family:var(--serif);
+  font-size:17px;font-weight:700;
+  margin-bottom:4px;
+}
+.review-sub{font-size:12.5px;color:#94a3b8}
+.review-body{padding:16px 20px 4px}
+.review-checks{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:16px;
+}
+.review-check{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;
+  background:#f8fafc;
+  border:1px solid var(--rule);
+  border-radius:7px;
+  font-size:12.5px;
+  font-weight:500;
+  color:var(--ink-2);
+}
+.review-check-dot{
+  width:7px;height:7px;border-radius:50%;flex-shrink:0;
+}
+.review-foot{
+  padding:12px 20px 16px;
+  border-top:1px solid var(--rule);
+  display:flex;align-items:center;gap:8px;
+}
+
+/* ════ TIPS BOX ══════════════════════════════════════════════ */
+.tips-box{
+  background:var(--white);
+  border:1px solid var(--rule);
+  border-left:3px solid;
+  border-radius:var(--r);
+  padding:14px 16px;
+  margin-top:12px;
+  margin-bottom:4px;
+}
+.tips-box-label{
+  font-size:10.5px;font-weight:700;font-family:var(--mono);
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:6px;
+}
+.tips-box ul{
+  list-style:none;
+  display:flex;flex-direction:column;gap:5px;
+}
+.tips-box li{
+  font-size:12.5px;color:var(--ink-2);
+  display:flex;gap:7px;
+}
+.tips-box li::before{
+  content:'→';
+  color:var(--ink-4);flex-shrink:0;
+  font-family:var(--mono);font-size:11px;margin-top:2px;
+}
+
+/* ════ USAGE NOTE ════════════════════════════════════════════ */
+.usage-note{
+  background:#fffbeb;
+  border:1px solid #fde68a;
+  border-radius:var(--r);
+  padding:14px 16px;
+  margin:24px 0;
+  display:flex;gap:10px;
+}
+.usage-note-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.usage-note-body{font-size:13px;color:#78350f;line-height:1.6}
+.usage-note-body strong{font-weight:700}
+
+/* ════ FOOTER ════════════════════════════════════════════════ */
+.site-footer{
+  background:#0f172a;
+  padding:28px 24px;
+  text-align:center;
+}
+.site-footer p{
+  font-size:12px;
+  color:#475569;
+  font-family:var(--mono);
+}
+.site-footer a{color:#94a3b8}
+
+/* ════ RESPONSIVE ════════════════════════════════════════════ */
+@media(max-width:540px){
+  .review-checks{grid-template-columns:1fr}
+  .hero-chips{gap:6px}
+  .hero-chip{font-size:10.5px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">PROMPT HUB · 張萬權 | wonchen.chang@gmail.com</p>
+    <h1 class="hero-title">計畫提案<span>指引</span></h1>
+    <p class="hero-sub">政府計畫書 AI 協作 SOP &nbsp;×&nbsp; 計畫提案自我審查</p>
+    <p class="hero-quote">「讓 AI 成為你的提案顧問，而不只是文字產生器。」</p>
+    <div class="hero-chips">
+      <span class="hero-chip"><span>📁</span> 知識庫準備</span>
+      <span class="hero-chip"><span>⚙️</span> 系統提示詞</span>
+      <span class="hero-chip"><span>🔍</span> 標案解構</span>
+      <span class="hero-chip"><span>✍️</span> 計畫緣起</span>
+      <span class="hero-chip"><span>📋</span> 執行策略</span>
+      <span class="hero-chip"><span>🛡️</span> 防禦測試</span>
+      <span class="hero-chip"><span>✅</span> 整體審查</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ══ 使用說明 ═══════════════════════════════════════════ -->
+<div class="usage-note">
+  <div class="usage-note-icon">💡</div>
+  <div class="usage-note-body">
+    <strong>使用方式：</strong>依序執行 STEP 0–4 撰寫計畫書，完成後用 STEP 5（整體審查）做最終把關。
+    每個步驟點擊「複製提示詞」，貼到 Claude 對話框即可啟動 AI 協作。
+    建議在 <strong>Claude Project</strong> 中操作，讓 AI 記住知識庫文件和前一步的決策。
+  </div>
+</div>
+
+<!-- ══ PART A：政府計畫書 SOP ══════════════════════════════ -->
+<div class="section-header">
+  <div class="section-num" style="background:#0f172a">A</div>
+  <div>
+    <div class="section-title">政府計畫書 AI 協作 SOP</div>
+    <div class="section-desc">五個步驟從零到完稿，每一步驟都有對應的提示詞</div>
+  </div>
+</div>
+
+<!-- SOP 流程圖 -->
+<div class="sop-flow">
+
+  <!-- STEP 0 -->
+  <div class="sop-step">
+    <div class="sop-line"></div>
+    <div class="sop-dot-col">
+      <div class="sop-dot" style="background:#f5f3ff">📁</div>
+    </div>
+    <div class="sop-content">
+      <div class="sop-tag" style="background:#f5f3ff;color:#6d28d9">STEP 0 · 開始前</div>
+      <div class="sop-step-title">知識庫準備清單</div>
+      <div class="sop-step-desc">上傳三類文件到 Claude Project：公司資產（The Who）、服務規格（The What）、標案規範（The Rule）。這是整個流程的地基，備料越完整，後面的 AI 輸出品質越高。</div>
+      <!-- Prompt Card -->
+      <div class="prompt-card" style="border-left-color:#6d28d9">
+        <div class="prompt-card-head">
+          <div class="prompt-card-info">
+            <div class="prompt-card-badge" style="background:#f5f3ff;color:#6d28d9">STEP 0 · 知識庫</div>
+            <div class="prompt-card-title">政府計畫書｜知識庫準備清單</div>
+          </div>
+        </div>
+        <div class="prompt-card-body">
+          <pre class="prompt-text" id="p75"># 知識庫文件準備清單
+
+在開始對話前，請先在 Claude Project 中上傳以下三類文件。
+
+## 第一類：公司 ／ 團隊資產（The Who）
+□ 公司簡介（含核心業務、成立背景、服務範疇）
+□ 核心團隊履歷（強調過往實績與專業頭銜）
+□ 過去成功得標的計畫書範本（1–2 份為佳）
+→ 目的：讓 AI 學習我們的背景與寫作風格
+
+## 第二類：產品 ／ 服務規格（The What）
+□ 過往輔導新創的 SOP 或服務流程
+□ 商業模式設計圖或服務架構說明
+□ 專屬解決方案的技術或方法論介紹
+→ 目的：讓 AI 理解我們提供的服務與方法
+
+## 第三類：本次標案規範（The Rule）
+□ 計畫書或補助申請徵案須知
+□ 評選項目與配分表
+□ 完整徵求計畫書（PDF 或 Word）
+→ 目的：讓 AI 依據標案規則產出對應內容
+
+## 核心原則
+把「公司底蘊 + 服務內容 + 標案規則」完整餵給 AI，再開始撰寫。</pre>
+        </div>
+        <div class="prompt-card-foot">
+          <button class="copy-btn" style="background:#6d28d9" onclick="copyPrompt('p75',this)">⎘ 複製提示詞</button>
+          <span class="copy-hint">貼入 Claude Project Instructions 或對話框</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="sop-step">
+    <div class="sop-line"></div>
+    <div class="sop-dot-col">
+      <div class="sop-dot" style="background:#e0f2fe">⚙️</div>
+    </div>
+    <div class="sop-content">
+      <div class="sop-tag" style="background:#e0f2fe;color:#0284c7">STEP 1 · 角色設定</div>
+      <div class="sop-step-title">專案系統提示詞</div>
+      <div class="sop-step-desc">設定 AI 的角色、語體規範和引用原則。貼到 Claude Project 的 Instructions 欄位，之後每次對話都會自動套用，不需要重複說明。</div>
+      <div class="prompt-card" style="border-left-color:#0284c7">
+        <div class="prompt-card-head">
+          <div class="prompt-card-info">
+            <div class="prompt-card-badge" style="background:#e0f2fe;color:#0284c7">STEP 1 · 系統</div>
+            <div class="prompt-card-title">政府計畫書｜專案系統提示詞</div>
+          </div>
+        </div>
+        <div class="prompt-card-body">
+          <pre class="prompt-text" id="p76">你現在是一位具備豐富公部門評選經驗的企業策略長（CSO）、新創教練與政府補助顧問。你的任務是協助我撰寫極具說服力、邏輯嚴密且具備高度可行性的政府計畫書。
+
+## 行為準則
+
+【正式語體】
+使用公部門習慣的精煉、客觀、具結構化的正式語體。避免口語化表達與模糊用詞。
+
+【量化效益】
+善用量化數據展現效益。凡提及成果、影響或規模，請主動提出可衡量的指標。
+
+【管理框架】
+主動應用 OGSM、BCG 矩陣、SWOT、邏輯架構矩陣等管理框架，強化計畫書的商業模式邏輯與論證嚴謹性。
+
+【先確認再展開】
+生成任何長篇內容前，必須先與我確認骨架與大綱。確認後才開始完整撰寫。
+
+## 引用原則
+在引用公司背景、案例與數據時，請嚴格參考 Project Knowledge 中的文件資料，不得自行編造數據、案例或個人經歷。信心不足時請標註【需確認】。</pre>
+        </div>
+        <div class="prompt-card-foot">
+          <button class="copy-btn" style="background:#0284c7" onclick="copyPrompt('p76',this)">⎘ 複製提示詞</button>
+          <span class="copy-hint">貼入 Claude Project Instructions（永久套用）</span>
+        </div>
+      </div>
+      <div class="tips-box" style="border-left-color:#0284c7">
+        <div class="tips-box-label" style="color:#0284c7">💡 使用技巧</div>
+        <ul>
+          <li>這個提示詞貼到 Project Instructions 後，每次對話都會自動生效，不需要重複貼</li>
+          <li>如果是特定類型補助（醫療、文化、科技），可以在【正式語體】後面追加：「請特別引用主辦機關的政策文件用語」</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="sop-step">
+    <div class="sop-line"></div>
+    <div class="sop-dot-col">
+      <div class="sop-dot" style="background:#f0fdfa">🔍</div>
+    </div>
+    <div class="sop-content">
+      <div class="sop-tag" style="background:#f0fdfa;color:#0f766e">STEP 2 · P1</div>
+      <div class="sop-step-title">標案解構（破冰與 RFP 拆解）</div>
+      <div class="sop-step-desc">讓 AI 讀懂評選邏輯，建立 OGSM 架構。這步驟決定整份計畫書的重心，寫錯方向之後再改事倍功半。<strong>完成後確認 AI 的架構，再進行下一步。</strong></div>
+      <div class="prompt-card" style="border-left-color:#0f766e">
+        <div class="prompt-card-head">
+          <div class="prompt-card-info">
+            <div class="prompt-card-badge" style="background:#f0fdfa;color:#0f766e">STEP 2 · P1</div>
+            <div class="prompt-card-title">政府計畫書｜P1 標案解構（破冰與 RFP 拆解）</div>
+          </div>
+        </div>
+        <div class="prompt-card-body">
+          <pre class="prompt-text" id="p77">請閱讀知識庫中的標案徵求須知，協助我完成以下三項任務，完成後等待我確認再進行下一步。
+
+## 任務一：評選邏輯梳理
+請用條列方式列出：
+- 本計畫的核心政策目標（主辦機關最在乎什麼）
+- 評選委員最看重的 3 個得分關鍵（依配分權重排列）
+- 我方需要特別注意的加分或扣分項目
+
+## 任務二：初步計畫策略架構（OGSM 框架）
+請結合知識庫中我們團隊的核心技術與實績，利用 OGSM 框架為本次標案草擬初步的計畫策略架構：
+- 1 個 Objective（整體目標）
+- 2–3 個 Goals（具體目標）
+- 對應每個 Goal 的 Strategies（策略方向）
+- 具體且可驗收的 Measures（衡量指標）
+
+## 任務三：確認節奏
+請在完成上述兩項後，說明下一步你建議如何展開，等待我確認修改後再繼續。</pre>
+        </div>
+        <div class="prompt-card-foot">
+          <button class="copy-btn" style="background:#0f766e" onclick="copyPrompt('p77',this)">⎘ 複製提示詞</button>
+          <span class="copy-hint">確認 OGSM 架構後再進行 P2</span>
+        </div>
+      </div>
+      <div class="tips-box" style="border-left-color:#0f766e">
+        <div class="tips-box-label" style="color:#0f766e">💡 使用技巧</div>
+        <ul>
+          <li>重點看「評選委員最看重的 3 個得分關鍵」——這決定了計畫書哪些章節要寫最長、最強</li>
+          <li>如果 OGSM 中有任何數字你覺得達不到，立刻告訴 AI 調整，現在改比寫完整份再改省力得多</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="sop-step">
+    <div class="sop-line"></div>
+    <div class="sop-dot-col">
+      <div class="sop-dot" style="background:#fef3c7">✍️</div>
+    </div>
+    <div class="sop-content">
+      <div class="sop-tag" style="background:#fef3c7;color:#b45309">STEP 3 · P2</div>
+      <div class="sop-step-title">計畫緣起與團隊優勢（Why Us）</div>
+      <div class="sop-step-desc">計畫書的「第一印象」。三段結構：政策痛點 → 為何是我們 → 成功案例佐證。字數控制在 800 字以內，語體使用公部門正式書面語。</div>
+      <div class="prompt-card" style="border-left-color:#b45309">
+        <div class="prompt-card-head">
+          <div class="prompt-card-info">
+            <div class="prompt-card-badge" style="background:#fef3c7;color:#b45309">STEP 3 · P2</div>
+            <div class="prompt-card-title">政府計畫書｜P2 計畫緣起與團隊優勢（Why Us）</div>
+          </div>
+        </div>
+        <div class="prompt-card-body">
+          <pre class="prompt-text" id="p78">我們現在來撰寫「計畫緣起與團隊優勢」章節。請參考剛才定案的 OGSM 架構，並調用知識庫中我們團隊的成功案例與實績。
+
+## 寫作要求
+
+### 第一段：政策痛點（問題意識）
+- 點出目前該產業或公部門面臨的具體痛點
+- 結合本次標案的政策方向，說明這個問題為何需要被解決
+- 使用量化數據或產業報告佐證（若知識庫中有，請引用）
+
+### 第二段：為何是我們（Why Us）
+- 說明我們團隊的核心專業（請帶入知識庫中的服務方法論與實績）
+- 具體說明我們的方法論如何針對性地解決上述痛點
+- 列出 3–5 個我方核心優勢（條列式，每點一句話）
+
+### 第三段：成功案例佐證
+- 從知識庫中調用 1–2 個最相關的成功案例
+- 每個案例說明：背景、我方做了什麼、產生什麼具體成效
+
+## 輸出規格
+- 全文字數控制在 800 字以內
+- 語體使用公部門正式書面語
+- 完成後請等待我確認，再進入執行策略章節</pre>
+        </div>
+        <div class="prompt-card-foot">
+          <button class="copy-btn" style="background:#b45309" onclick="copyPrompt('p78',this)">⎘ 複製提示詞</button>
+          <span class="copy-hint">確認輸出內容後再進行 P3</span>
+        </div>
+      </div>
+      <div class="tips-box" style="border-left-color:#b45309">
+        <div class="tips-box-label" style="color:#b45309">💡 使用技巧</div>
+        <ul>
+          <li>「核心優勢」每一點都要有具體數字，把「品質穩定」改成「不良率低於0.3%，高於業界平均30%」</li>
+          <li>如果知識庫中沒有成功案例，告訴 AI：「我目前沒有書面案例，請用以下口頭描述來生成：……」</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="sop-step">
+    <div class="sop-line"></div>
+    <div class="sop-dot-col">
+      <div class="sop-dot" style="background:#f5f3ff">📋</div>
+    </div>
+    <div class="sop-content">
+      <div class="sop-tag" style="background:#f5f3ff;color:#7c3aed">STEP 4 · P3</div>
+      <div class="sop-step-title">執行策略與時程（The How）</div>
+      <div class="sop-step-desc">最核心的章節。三項產出：SOP 執行步驟、Deliverables 清單、圖表架構建議。告訴 AI 你的工作包名稱，它會幫你補全細節。</div>
+      <div class="prompt-card" style="border-left-color:#7c3aed">
+        <div class="prompt-card-head">
+          <div class="prompt-card-info">
+            <div class="prompt-card-badge" style="background:#f5f3ff;color:#7c3aed">STEP 4 · P3</div>
+            <div class="prompt-card-title">政府計畫書｜P3 執行策略與時程（The How）</div>
+          </div>
+        </div>
+        <div class="prompt-card-body">
+          <pre class="prompt-text" id="p79">接下來撰寫「計畫執行策略與實施方案」章節。以下是本計畫規劃的主要執行工作項目：
+
+（請在此列出你的工作包，例如：
+工作包一：AI 工具導入培訓
+工作包二：輔導個案執行
+工作包三：成果驗收與報告）
+
+## 請完成以下三項任務
+
+### 任務一：具體執行步驟（SOP）
+針對每個工作包，撰寫具體的執行步驟（Step by Step），讓審查委員清楚看到我們怎麼做、誰來做、什麼時間完成。
+
+### 任務二：產出物清單（Deliverables）
+針對每一項任務，列出預期的可驗收產出物（Deliverables），並說明驗收標準或產出形式。
+
+### 任務三：圖表架構建議
+針對這段執行策略，建議我可以搭配哪些圖表來呈現？
+- 請給出圖表類型建議（例如：服務流程圖、生態系架構圖、甘特圖）
+- 每張圖的節點與層級文字建議，讓我後續可以用 Canva 或其他工具繪製
+
+完成後請等待我確認再進行效益評估章節。</pre>
+        </div>
+        <div class="prompt-card-foot">
+          <button class="copy-btn" style="background:#7c3aed" onclick="copyPrompt('p79',this)">⎘ 複製提示詞</button>
+          <span class="copy-hint">先填入你的工作包名稱再複製</span>
+        </div>
+      </div>
+      <div class="tips-box" style="border-left-color:#7c3aed">
+        <div class="tips-box-label" style="color:#7c3aed">💡 使用技巧</div>
+        <ul>
+          <li>把「例如：工作包一、二、三」換成你的實際工作包名稱，AI 才能給出針對性的 SOP</li>
+          <li>圖表架構建議是很多計畫書被退件的原因——審查委員看不到系統架構圖，會認為你沒有真正想清楚</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="sop-step">
+    <div class="sop-dot-col">
+      <div class="sop-dot" style="background:#fff1f2">🛡️</div>
+    </div>
+    <div class="sop-content">
+      <div class="sop-tag" style="background:#fff1f2;color:#be123c">STEP 5 · P4</div>
+      <div class="sop-step-title">效益評估與防禦測試（Impact & Defense）</div>
+      <div class="sop-step-desc">計畫書完成後，讓 AI 扮演最挑剔的審查委員，提出 5 個尖銳質疑、強化 KPI、準備答詢話術。這步驟往往能發現最後的漏洞。</div>
+      <div class="prompt-card" style="border-left-color:#be123c">
+        <div class="prompt-card-head">
+          <div class="prompt-card-info">
+            <div class="prompt-card-badge" style="background:#fff1f2;color:#be123c">STEP 5 · P4</div>
+            <div class="prompt-card-title">政府計畫書｜P4 效益評估與防禦測試（Impact &amp; Defense）</div>
+          </div>
+        </div>
+        <div class="prompt-card-body">
+          <pre class="prompt-text" id="p80">計畫書主體已初步完成。請切換視角，扮演嚴格的政府審查委員（尤其針對財務預算與預期效益最挑剔的委員），協助我完成以下三項任務。
+
+## 任務一：評選會議尖銳質疑
+針對我們目前規劃的執行方案，提出 5 個在評選會議上最可能被質疑的問題。
+- 問題要具體、尖銳、符合公部門審查文化
+- 每個問題請說明委員質疑的邏輯（為什麼他會這樣問）
+
+## 任務二：效益 KPI 強化
+檢視我們的預期效益是否過於空泛。請協助：
+- 列出目前效益陳述中哪些是「質化描述」（不夠具體）
+- 將這些質化效益轉化為可量化、可被驗收的 KPI 指標
+- 建議 KPI 的衡量方式與驗收時間點
+
+## 任務三：答詢防禦策略
+針對任務一中你提出的 5 個質疑：
+- 給出我們在口頭報告 ／ 簡報答詢時的建議回應方向
+- 每個回應說明：核心論點 + 佐證方式 + 應避免的說法
+
+完成後，請彙整成「審查風險評估報告」，作為最終修改的參考依據。</pre>
+        </div>
+        <div class="prompt-card-foot">
+          <button class="copy-btn" style="background:#be123c" onclick="copyPrompt('p80',this)">⎘ 複製提示詞</button>
+          <span class="copy-hint">把初稿貼給 AI 後執行此提示詞</span>
+        </div>
+      </div>
+      <div class="tips-box" style="border-left-color:#be123c">
+        <div class="tips-box-label" style="color:#be123c">💡 使用技巧</div>
+        <ul>
+          <li>五個質疑中，「你的效益數字怎麼算出來的」最難回答，提前準備計算邏輯</li>
+          <li>如果 AI 提出你答不出來的質疑，代表計畫書這個地方需要補強，不要等到評選現場才發現</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /sop-flow -->
+
+<!-- ══ PART B：計畫提案自我審查 ════════════════════════════ -->
+<div class="section-header">
+  <div class="section-num" style="background:#1d4ed8">B</div>
+  <div>
+    <div class="section-title">計畫提案自我審查</div>
+    <div class="section-desc">送件前的全面健檢，以審查委員視角逐項評分並提出修改建議</div>
+  </div>
+</div>
+
+<div class="review-card">
+  <div class="review-card-head">
+    <div class="review-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      送件前必做 · 10 項審查
+    </div>
+    <div class="review-title">計畫提案自我審查</div>
+    <div class="review-sub">貼入計畫書草稿，AI 將以審查委員視角逐項評分（1–5分），並給出具體修改建議</div>
+  </div>
+
+  <div class="review-body">
+    <div class="review-checks">
+      <div class="review-check">
+        <div class="review-check-dot" style="background:#6d28d9"></div>政策契合度
+      </div>
+      <div class="review-check">
+        <div class="review-check-dot" style="background:#0284c7"></div>問題定義清楚度
+      </div>
+      <div class="review-check">
+        <div class="review-check-dot" style="background:#0f766e"></div>技術創新性
+      </div>
+      <div class="review-check">
+        <div class="review-check-dot" style="background:#b45309"></div>產業應用價值
+      </div>
+      <div class="review-check">
+        <div class="review-check-dot" style="background:#7c3aed"></div>執行可行性
+      </div>
+      <div class="review-check">
+        <div class="review-check-dot" style="background:#be123c"></div>KPI 明確性
+      </div>
+      <div class="review-check">
+        <div class="review-check-dot" style="background:#1d4ed8"></div>預算合理性
+      </div>
+      <div class="review-check">
+        <div class="review-check-dot" style="background:#0891b2"></div>風險控管完整性
+      </div>
+      <div class="review-check">
+        <div class="review-check-dot" style="background:#059669"></div>團隊能力匹配度
+      </div>
+      <div class="review-check">
+        <div class="review-check-dot" style="background:#d97706"></div>審查說服力
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:0 20px 16px">
+    <div class="prompt-card" style="border-left-color:#1d4ed8;margin-bottom:0">
+      <div class="prompt-card-head">
+        <div class="prompt-card-info">
+          <div class="prompt-card-badge" style="background:#eff6ff;color:#1d4ed8">全面健檢 · 10項評分</div>
+          <div class="prompt-card-title">計畫提案自我審查</div>
+        </div>
+      </div>
+      <div class="prompt-card-body">
+        <pre class="prompt-text" id="p11">你是一位資深政府計畫審查顧問，熟悉技術研發提案、產業應用、KPI／OKR、預算合理性、風險控管與審查委員評分邏輯。請以審查委員視角逐項檢視，並提出具體修改建議。
+
+## 一、基本資料
+計畫名稱：【請輸入計畫名稱】
+提案對象：【請輸入政府單位、補助計畫或徵案類型】
+計畫期程：【請輸入執行期間】
+總經費：【請輸入預算金額】
+計畫摘要：【請貼上】
+核心技術：【請貼上】
+目標產業或應用對象：【請輸入】
+預期成果：【請貼上】
+目前 KPI／OKR：【請貼上，沒有則填「待補充」】
+預算內容：【請貼上預算表或摘要】
+風險管理：【請貼上目前已列風險與對策】
+
+## 二、審查任務（請逐項完成，各附輸出格式）
+
+### 1. 整體計畫健檢
+各項評分 1–5 分，附評分理由：
+| 審查構面 | 評分（1–5）| 評分理由 | 改善方向 |
+構面：政策契合度、問題定義清楚度、技術創新性、產業應用價值、執行可行性、KPI 明確性、預算合理性、風險控管完整性、團隊能力匹配度、審查說服力
+
+### 2. 審查委員可能質疑
+| 可能質疑 | 目前內容弱點 | 可能扣分原因 | 建議補強寫法 |
+
+### 3. 技術創新性檢查
+| 比較項目 | 既有做法 | 本計畫做法 | 差異化價值 | 驗證方式 |
+
+### 4. 產業效益與應用場景檢查
+| 應用場景 | 使用者痛點 | 本計畫解法 | 導入後改善 | 可驗證效益 |
+
+### 5. 執行規劃與里程碑檢查
+| 工作項目 | 期程 | 交付成果 | 驗收方式 | 目前問題 | 修正建議 |
+
+### 6. KPI／OKR 檢查與修正
+現有指標問題分析 ＋ 建議新版 KPI／OKR（含目標值、衡量方式、驗收節點）
+
+### 7. 預算合理性檢查
+| 預算項目 | 金額 | 合理性判斷 | 可能被質疑之處 | 建議說明方式 |
+
+### 8. 風險與備案檢查
+| 風險項目 | 影響程度 | 目前對策 | 備案建議 |
+
+### 9. 送件前修正清單（依優先順序排列）
+
+### 10. 整體送件判斷
+□ 可送件　□ 小幅修正後可送件　□ 需大幅補強　□ 暫不建議送件
+→ 理由說明：
+
+## 三、輸出規範
+繁體中文，不編造數據，資料不足處標示「待補充」，發現前後矛盾或數據不一致時請明確標示</pre>
+      </div>
+      <div class="prompt-card-foot">
+        <button class="copy-btn" style="background:#1d4ed8" onclick="copyPrompt('p11',this)">⎘ 複製提示詞</button>
+        <span class="copy-hint">填入【】內的基本資料後，貼入 Claude 執行</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="review-foot">
+    <div class="tips-box" style="border-left-color:#1d4ed8;margin:0;flex:1">
+      <div class="tips-box-label" style="color:#1d4ed8">💡 使用技巧</div>
+      <ul>
+        <li>把計畫書草稿中的各章節複製貼到對應的【請貼上】欄位，AI 的審查結果會更精準</li>
+        <li>重點看「整體送件判斷」和「送件前修正清單」——先修優先序 1–3 的問題，時間不夠時其他可以暫緩</li>
+        <li>這個模組可以和 STEP 5（防禦測試）搭配使用，兩者互補：防禦測試針對口頭答詢，這個模組針對書面文件</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<!-- ══ FOOTER ══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <p>PROMPT HUB · 張萬權 · <a href="mailto:wonchen.chang@gmail.com">wonchen.chang@gmail.com</a></p>
+  <p style="margin-top:4px">計畫提案指引 · 政府計畫書 AI 協作 SOP</p>
+</footer>
+
+<script>
+function copyPrompt(id, btn) {
+  var text = document.getElementById(id).textContent;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() { flashBtn(btn); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+    flashBtn(btn);
+  }
+}
+function flashBtn(btn) {
+  var orig = btn.innerHTML;
+  btn.classList.add('copied');
+  btn.textContent = '✓ 已複製！';
+  setTimeout(function() {
+    btn.classList.remove('copied');
+    btn.innerHTML = orig;
+  }, 2200);
+}
+</script>
+</body>
+</html>
