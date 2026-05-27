@@ -459,8 +459,8 @@ a{color:inherit;text-decoration:none}
   <div class="usage-note-icon">💡</div>
   <div class="usage-note-body">
     <strong>使用方式：</strong>依序執行 STEP 0–4 撰寫計畫書，完成後用 STEP 5（整體審查）做最終把關。
-    每個步驟點擊「複製提示詞」，貼到 Claude 對話框即可啟動 AI 協作。
-    建議在 <strong>Claude Project</strong> 中操作，讓 AI 記住知識庫文件和前一步的決策。
+    每個步驟點擊「複製提示詞」，貼到 <strong>任何 AI 工具的對話框</strong>即可啟動協作。
+    建議使用支援「專案記憶」或「系統提示詞」功能的 AI 工具（如 Claude、ChatGPT、Gemini），以便讓 AI 記住知識庫文件和前一步的決策。
   </div>
 </div>
 
@@ -485,7 +485,7 @@ a{color:inherit;text-decoration:none}
     <div class="sop-content">
       <div class="sop-tag" style="background:#f5f3ff;color:#6d28d9">STEP 0 · 開始前</div>
       <div class="sop-step-title">知識庫準備清單</div>
-      <div class="sop-step-desc">上傳三類文件到 Claude Project：公司資產（The Who）、服務規格（The What）、標案規範（The Rule）。這是整個流程的地基，備料越完整，後面的 AI 輸出品質越高。</div>
+      <div class="sop-step-desc">將三類文件上傳到你使用的 AI 工具專案空間（如 Claude Project、ChatGPT Project、Gemini Gem）：公司資產（The Who）、服務規格（The What）、標案規範（The Rule）。這是整個流程的地基，備料越完整，後面的 AI 輸出品質越高。</div>
       <!-- Prompt Card -->
       <div class="prompt-card" style="border-left-color:#6d28d9">
         <div class="prompt-card-head">
@@ -497,7 +497,7 @@ a{color:inherit;text-decoration:none}
         <div class="prompt-card-body">
           <pre class="prompt-text" id="p75"># 知識庫文件準備清單
 
-在開始對話前，請先在 Claude Project 中上傳以下三類文件。
+在開始對話前，請先在你使用的 AI 工具專案空間（Claude Project、ChatGPT Project、Gemini Gem 等）中上傳以下三類文件。
 
 ## 第一類：公司 ／ 團隊資產（The Who）
 □ 公司簡介（含核心業務、成立背景、服務範疇）
@@ -522,7 +522,7 @@ a{color:inherit;text-decoration:none}
         </div>
         <div class="prompt-card-foot">
           <button class="copy-btn" style="background:#6d28d9" onclick="copyPrompt('p75',this)">⎘ 複製提示詞</button>
-          <span class="copy-hint">貼入 Claude Project Instructions 或對話框</span>
+          <span class="copy-hint">以此清單為備料依據，上傳文件到你使用的 AI 工具專案空間</span>
         </div>
       </div>
     </div>
@@ -537,7 +537,7 @@ a{color:inherit;text-decoration:none}
     <div class="sop-content">
       <div class="sop-tag" style="background:#e0f2fe;color:#0284c7">STEP 1 · 角色設定</div>
       <div class="sop-step-title">專案系統提示詞</div>
-      <div class="sop-step-desc">設定 AI 的角色、語體規範和引用原則。貼到 Claude Project 的 Instructions 欄位，之後每次對話都會自動套用，不需要重複說明。</div>
+      <div class="sop-step-desc">設定 AI 的角色、語體規範和引用原則。貼到 AI 工具的系統提示詞欄位（Claude 的 Project Instructions、ChatGPT 的 Custom Instructions、Gemini 的 Gem 說明），之後每次對話都會自動套用。</div>
       <div class="prompt-card" style="border-left-color:#0284c7">
         <div class="prompt-card-head">
           <div class="prompt-card-info">
@@ -563,17 +563,17 @@ a{color:inherit;text-decoration:none}
 生成任何長篇內容前，必須先與我確認骨架與大綱。確認後才開始完整撰寫。
 
 ## 引用原則
-在引用公司背景、案例與數據時，請嚴格參考 Project Knowledge 中的文件資料，不得自行編造數據、案例或個人經歷。信心不足時請標註【需確認】。</pre>
+在引用公司背景、案例與數據時，請嚴格參考我已上傳的專案文件資料，不得自行編造數據、案例或個人經歷。信心不足時請標註【需確認】。</pre>
         </div>
         <div class="prompt-card-foot">
           <button class="copy-btn" style="background:#0284c7" onclick="copyPrompt('p76',this)">⎘ 複製提示詞</button>
-          <span class="copy-hint">貼入 Claude Project Instructions（永久套用）</span>
+          <span class="copy-hint">貼入系統提示詞欄位（Claude Project Instructions ／ ChatGPT Custom Instructions ／ Gemini Gem）</span>
         </div>
       </div>
       <div class="tips-box" style="border-left-color:#0284c7">
         <div class="tips-box-label" style="color:#0284c7">💡 使用技巧</div>
         <ul>
-          <li>這個提示詞貼到 Project Instructions 後，每次對話都會自動生效，不需要重複貼</li>
+          <li>這個提示詞貼到 AI 工具的系統提示詞欄位後，每次對話都會自動生效，不需要重複貼（Claude：Project Instructions；ChatGPT：Custom Instructions；Gemini：Gem 說明欄）</li>
           <li>如果是特定類型補助（醫療、文化、科技），可以在【正式語體】後面追加：「請特別引用主辦機關的政策文件用語」</li>
         </ul>
       </div>
@@ -781,7 +781,7 @@ a{color:inherit;text-decoration:none}
         </div>
         <div class="prompt-card-foot">
           <button class="copy-btn" style="background:#be123c" onclick="copyPrompt('p80',this)">⎘ 複製提示詞</button>
-          <span class="copy-hint">把初稿貼給 AI 後執行此提示詞</span>
+          <span class="copy-hint">把計畫書初稿貼給 AI，再執行此提示詞</span>
         </div>
       </div>
       <div class="tips-box" style="border-left-color:#be123c">
@@ -913,7 +913,7 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="prompt-card-foot">
         <button class="copy-btn" style="background:#1d4ed8" onclick="copyPrompt('p11',this)">⎘ 複製提示詞</button>
-        <span class="copy-hint">填入【】內的基本資料後，貼入 Claude 執行</span>
+        <span class="copy-hint">填入【】內的基本資料後，貼入任一 AI 工具對話框執行</span>
       </div>
     </div>
   </div>
